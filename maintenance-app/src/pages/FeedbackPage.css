@@ -1,0 +1,98 @@
+/* FeedbackPage.css */
+
+/* Page Wrapper */
+.feedback-page {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Header */
+  .feedback-page h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .feedback-page h3 {
+    font-size: 1.5rem;
+    font-weight: semi-bold;
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  /* Form */
+  .feedback-form input,
+  .feedback-form textarea,
+  .feedback-form select {
+    padding: 10px;
+    margin: 8px 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .feedback-form button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .feedback-form button:hover {
+    background-color: #45a049;
+  }
+  
+  /* View Feedback Section */
+  .view-feedback {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .view-feedback select,
+  .view-feedback input {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Feedback List */
+  .feedback-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .feedback-list li {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .feedback-list li strong {
+    font-weight: bold;
+  }
+  
+  .feedback-list li small {
+    color: #555;
+    font-size: 0.9rem;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 600px) {
+    .feedback-page {
+      padding: 15px;
+    }
+  
+    .feedback-form input,
+    .feedback-form textarea,
+    .feedback-form select {
+      width: 100%;
+    }
+  }
+  

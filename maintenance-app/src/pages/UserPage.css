@@ -1,0 +1,80 @@
+.user-page-container {
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    color: #333;
+  }
+  
+  .form-section {
+    margin-bottom: 40px;
+  }
+  
+  .form-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .input-field {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+  }
+  
+  select.input-field {
+    width: 150px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn-register {
+    background-color: #007bff;
+  }
+  
+  .btn-register:hover {
+    background-color: #0056b3;
+  }
+  
+  .btn-update-role {
+    background-color: #ffc107;
+  }
+  
+  .btn-update-role:hover {
+    background-color: #e0a800;
+  }
+  
+  .btn-fetch-user {
+    background-color: #28a745;
+  }
+  
+  .btn-fetch-user:hover {
+    background-color: #218838;
+  }
+  
+  .user-details {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .user-details p {
+    margin: 8px 0;
+  }
+  

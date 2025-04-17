@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
+import './FeedbackPage.css'; // Import the CSS
 
 const FeedbackPage = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -40,9 +41,9 @@ const FeedbackPage = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div className="feedback-page">
       <h2>Submit Feedback</h2>
-      <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
+      <form onSubmit={handleSubmit} className="feedback-form">
         <input
           type="text"
           placeholder="Request ID"
@@ -75,8 +76,8 @@ const FeedbackPage = () => {
         <button type="submit">Submit Feedback</button>
       </form>
 
-      <h2>View Feedback</h2>
-      <div>
+      <h3>View Feedback</h3>
+      <div className="view-feedback">
         <select value={viewBy} onChange={(e) => setViewBy(e.target.value)}>
           <option value="request">By Request ID</option>
           <option value="staff">By Staff ID</option>
@@ -90,7 +91,7 @@ const FeedbackPage = () => {
         <button onClick={handleView}>View</button>
       </div>
 
-      <ul>
+      <ul className="feedback-list">
         {feedbacks.map((f) => (
           <li key={f._id}>
             <strong>Rating:</strong> {f.rating} - {f.comment} <br />
