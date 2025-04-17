@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import RequestPage from './pages/RequestPage';
 import UserPage from './pages/UserPage';
+import AssignmentPage from './pages/AssignmentPage'; 
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/requests" element={<RequestPage />} />
-        <Route path="/user" element={<UserPage />} />  {/* Corrected line */}
+        <Route path="/user" element={<UserPage />} />  
+        <Route path="/assignments" element={<AssignmentPage />} />
       </Routes>
     </>
   );
