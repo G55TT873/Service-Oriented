@@ -1,15 +1,22 @@
 require('dotenv').config();
-const express = require('express');
-const app = express();
+const fastify = require('fastify')({ logger: true });
 const connectDB = require('./config/db');
 const userRoutes = require('./routes/userRoutes');
 
-
 connectDB();
 
-app.use(express.json());
-app.use('/users', userRoutes);
+fastify.register(require('@fastify/cors')); // if needed for frontend
+fastify.register(require('@fastify/formbody'));
+fastify.register(userRoutes, { prefix: '/users' });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
-});
+const start = async () => {
+  try {
+    await fastify.listen({ port: process.env.PORT || 8000 });
+    console.log(`Server running on port ${process.env.PORT || 8000}`);
+  } catch (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+};
+
+start();

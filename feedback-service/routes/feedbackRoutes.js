@@ -1,35 +1,37 @@
-const express = require('express');
-const router = express.Router();
 const Feedback = require('../models/Feedback');
 
-// POST /feedback - Add feedback
-router.post('/', async (req, res) => {
-  try {
-    const feedback = await Feedback.create(req.body);
-    res.status(201).json(feedback);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+async function feedbackRoutes(fastify, options) {
 
-// GET /feedback/request/:requestId - View feedback for a request
-router.get('/request/:requestId', async (req, res) => {
-  try {
-    const feedbacks = await Feedback.find({ requestId: req.params.requestId });
-    res.json(feedbacks);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+  // POST /feedback - Add feedback
+  fastify.post('/', async (request, reply) => {
+    try {
+      const feedback = await Feedback.create(request.body);
+      reply.code(201).send(feedback);
+    } catch (err) {
+      reply.code(400).send({ error: err.message });
+    }
+  });
 
-// GET /feedback/staff/:staffId - View feedback for a staff member
-router.get('/staff/:staffId', async (req, res) => {
-  try {
-    const feedbacks = await Feedback.find({ staffId: req.params.staffId });
-    res.json(feedbacks);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
+  // GET /feedback/request/:requestId - View feedback for a request
+  fastify.get('/request/:requestId', async (request, reply) => {
+    try {
+      const feedbacks = await Feedback.find({ requestId: request.params.requestId });
+      reply.send(feedbacks);
+    } catch (err) {
+      reply.code(500).send({ error: err.message });
+    }
+  });
 
-module.exports = router;
+  // GET /feedback/staff/:staffId - View feedback for a staff member
+  fastify.get('/staff/:staffId', async (request, reply) => {
+    try {
+      const feedbacks = await Feedback.find({ staffId: request.params.staffId });
+      reply.send(feedbacks);
+    } catch (err) {
+      reply.code(500).send({ error: err.message });
+    }
+  });
+
+}
+
+module.exports = feedbackRoutes;

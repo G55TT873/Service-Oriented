@@ -20,7 +20,7 @@ const RequestPage = () => {
 
   const handleSubmit = async () => {
     try {
-      await axios.post('http://localhost:5001/api/requests', form);
+      await axios.post('http://localhost:8000/api/requests', form);
       alert('Request created!');
       setForm({ userId: '', title: '', description: '', imageUrl: '', status: 'Pending' });
       setUserIdSearch(form.userId);
@@ -32,7 +32,7 @@ const RequestPage = () => {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get(`http://localhost:5001/api/requests/user/${userIdSearch}`);
+      const res = await axios.get(`http://localhost:8000/api/requests/user/${userIdSearch}`);
       setRequests(res.data);
     } catch (err) {
       console.error(err);
@@ -41,7 +41,7 @@ const RequestPage = () => {
 
   const deleteRequest = async (id) => {
     try {
-      await axios.delete(`http://localhost:5001/api/requests/${id}`);
+      await axios.delete(`http://localhost:8000/api/requests/${id}`);
       setRequests(requests.filter(r => r._id !== id));
     } catch (err) {
       console.error(err);

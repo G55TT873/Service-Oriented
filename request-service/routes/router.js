@@ -1,21 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const {
-  createRequest,
-  getRequestsByUser,
-  updateRequest,
-  deleteRequest,
-} = require('../controllers/Request.js');
+const requestController = require('../controllers/Request');
 
+async function requestRoutes(fastify, opts) {
+    fastify.post('/api/requests', requestController.createRequest);
+    fastify.get('/api/requests/user/:userId', requestController.getRequestsByUser);
+    fastify.put('/api/requests/:id', requestController.updateRequest);
+    fastify.delete('/api/requests/:id', requestController.deleteRequest);
+}
 
-router.post('/', createRequest);
-
-router.get('/user/:userId', getRequestsByUser);
-
-
-router.put('/:id', updateRequest);
-
-
-router.delete('/:id', deleteRequest);
-
-module.exports = router;
+module.exports = requestRoutes;

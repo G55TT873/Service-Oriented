@@ -1,24 +1,37 @@
-const express = require('express');
+// index.js
+const fastify = require('fastify')({ logger: true });
 const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
-
+const dotenv = require('dotenv');
 const assignmentRoutes = require('./routes/assignmentRoutes');
 
-const app = express();
-const PORT = process.env.PORT || 4000;
+// Load environment variables
+dotenv.config();
 
-app.use(cors());
-app.use(express.json());
+// Register CORS plugin
+fastify.register(require('@fastify/cors'), { origin: '*' });
 
+// Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI || 'mongodb://localhost:27017/assignment-service', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.error('Mongo error:', err));
+  .then(() => fastify.log.info('MongoDB connected'))
+  .catch((err) => fastify.log.error('Mongo error:', err));
 
-app.use('/assignments', assignmentRoutes);
+// Register routes
+fastify.register(assignmentRoutes);
 
-app.listen(PORT, () => console.log(`Assignment Service running on port ${PORT}`));
+// Start server
+const start = async () => {
+  try {
+    const PORT = process.env.PORT || 4000;
+    await fastify.listen(PORT);
+    console.log(`Assignment Service running on port ${PORT}`);
+  } catch (err) {
+    fastify.log.error(err);
+    process.exit(1);
+  }
+};
+
+start();

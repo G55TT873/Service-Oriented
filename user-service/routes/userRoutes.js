@@ -1,15 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const {
-  register,
-  login,
-  getUser,
-  updateRole
-} = require('../controllers/userController');
+const userController = require('../controllers/userController');
 
-router.post('/register', register);
-router.post('/login', login);
-router.get('/:id', getUser);
-router.put('/role/:id', updateRole);
+async function userRoutes(fastify, options) {
+  fastify.post('/register', userController.register);
+  fastify.post('/login', userController.login);
+  fastify.get('/:id', userController.getUser);
+  fastify.put('/role/:id', userController.updateRole);
+}
 
-module.exports = router;
+module.exports = userRoutes;
