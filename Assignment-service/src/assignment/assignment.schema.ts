@@ -1,13 +1,14 @@
-const mongoose = require('mongoose');
+// src/assignment/assignment.schema.ts
+import { Schema } from 'mongoose';
 
-const assignmentSchema = new mongoose.Schema({
+export const AssignmentSchema = new Schema({
   requestId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     required: true,
     ref: 'Request',
   },
   staffId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     required: true,
     ref: 'User',
   },
@@ -21,5 +22,3 @@ const assignmentSchema = new mongoose.Schema({
     default: 'Assigned',
   },
 });
-
-module.exports = mongoose.model('Assignment', assignmentSchema);
